@@ -7,7 +7,7 @@
 ### OPTIONS AND VARIABLES ###
 
 dotfilesrepo="https://github.com/sahidrahman404/dotfiles.git"
-progsfile="https://raw.githubusercontent.com/LukeSmithxyz/LARBS/master/progs.csv"
+progsfile="https://raw.githubusercontent.com/sahidrahman404/arch-bootstrap/myBranch/progs.csv"
 aurhelper="yay"
 repobranch="master"
 
