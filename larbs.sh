@@ -6,7 +6,7 @@
 
 ### OPTIONS AND VARIABLES ###
 
-dotfilesrepo="https://github.com/lukesmithxyz/voidrice.git"
+dotfilesrepo="https://github.com/sahidrahman404/dotfiles.git"
 progsfile="https://raw.githubusercontent.com/LukeSmithxyz/LARBS/master/progs.csv"
 aurhelper="yay"
 repobranch="master"
@@ -77,32 +77,32 @@ adduserandpass() {
 
 refreshkeys() {
 	case "$(readlink -f /sbin/init)" in
-	*systemd*)
-		whiptail --infobox "Refreshing Arch Keyring..." 7 40
-		pacman --noconfirm -S archlinux-keyring >/dev/null 2>&1
-		;;
-	*)
-		whiptail --infobox "Enabling Arch Repositories..." 7 40
-		if ! grep -q "^\[universe\]" /etc/pacman.conf; then
-			echo "[universe]
+		*systemd*)
+			whiptail --infobox "Refreshing Arch Keyring..." 7 40
+			pacman --noconfirm -S archlinux-keyring >/dev/null 2>&1
+			;;
+		*)
+			whiptail --infobox "Enabling Arch Repositories..." 7 40
+			if ! grep -q "^\[universe\]" /etc/pacman.conf; then
+				echo "[universe]
 Server = https://universe.artixlinux.org/\$arch
 Server = https://mirror1.artixlinux.org/universe/\$arch
 Server = https://mirror.pascalpuffke.de/artix-universe/\$arch
 Server = https://artixlinux.qontinuum.space/artixlinux/universe/os/\$arch
 Server = https://mirror1.cl.netactuate.com/artix/universe/\$arch
 Server = https://ftp.crifo.org/artix-universe/" >>/etc/pacman.conf
-			pacman -Sy --noconfirm >/dev/null 2>&1
-		fi
-		pacman --noconfirm --needed -S \
-			artix-keyring artix-archlinux-support >/dev/null 2>&1
-		for repo in extra community; do
-			grep -q "^\[$repo\]" /etc/pacman.conf ||
-				echo "[$repo]
+				pacman -Sy --noconfirm >/dev/null 2>&1
+			fi
+			pacman --noconfirm --needed -S \
+				artix-keyring artix-archlinux-support >/dev/null 2>&1
+			for repo in extra community; do
+				grep -q "^\[$repo\]" /etc/pacman.conf ||
+					echo "[$repo]
 Include = /etc/pacman.d/mirrorlist-arch" >>/etc/pacman.conf
-		done
-		pacman -Sy >/dev/null 2>&1
-		pacman-key --populate archlinux >/dev/null 2>&1
-		;;
+			done
+			pacman -Sy >/dev/null 2>&1
+			pacman-key --populate archlinux >/dev/null 2>&1
+			;;
 	esac
 }
 
@@ -170,10 +170,10 @@ installationloop() {
 		echo "$comment" | grep -q "^\".*\"$" &&
 			comment="$(echo "$comment" | sed -E "s/(^\"|\"$)//g")"
 		case "$tag" in
-		"A") aurinstall "$program" "$comment" ;;
-		"G") gitmakeinstall "$program" "$comment" ;;
-		"P") pipinstall "$program" "$comment" ;;
-		*) maininstall "$program" "$comment" ;;
+			"A") aurinstall "$program" "$comment" ;;
+			"G") gitmakeinstall "$program" "$comment" ;;
+			"P") pipinstall "$program" "$comment" ;;
+			*) maininstall "$program" "$comment" ;;
 		esac
 	done </tmp/progs.csv
 }
@@ -195,7 +195,7 @@ vimplugininstall() {
 	# Installs vim plugins.
 	whiptail --infobox "Installing neovim plugins..." 7 60
 	mkdir -p "/home/$name/.config/nvim/autoload"
-	curl -Ls "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" >  "/home/$name/.config/nvim/autoload/plug.vim"
+	curl -Ls "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" >"/home/$name/.config/nvim/autoload/plug.vim"
 	chown -R "$name:wheel" "/home/$name/.config/nvim"
 	sudo -u "$name" nvim -c "PlugInstall|q|q"
 }
