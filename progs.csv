@@ -82,3 +82,4 @@ A,mpv-mpvacious,"Adds mpv keybindings to create Anki cards from movies and TV sh
 A,vscodium-bin,"a community-driven, freely-licensed binary distribution of Microsoft’s editor VS Code."
 ,wireguard-tools,"a communication protocol and free and open-source software that implements encrypted virtual private networks, and was designed with the goals of ease of use, high speed performance, and low attack surface."
 ,keychain,"a frontend to ssh-agent and ssh-add, but allows you to easily have one long running ssh-agent process per system, rather than the norm of one ssh-agent per login session"
+,leiningen,"build automation and dependency management tool for the simple configuration of software projects written in the Clojure programming language"
